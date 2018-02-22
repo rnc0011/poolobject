@@ -37,11 +37,11 @@ public class ReusablePoolTest {
 	@Test
 	public void testGetInstance() {
 		ReusablePool pool = ReusablePool.getInstance();
-		assertEquals(true, pool instanceof ReusablePool);
-		
+		assertTrue(pool instanceof ReusablePool);
+
 		ReusablePool pool2 = ReusablePool.getInstance();
-		assertEquals(true, pool2 instanceof ReusablePool);
-		
+		assertTrue(pool2 instanceof ReusablePool);
+
 		assertTrue(pool == pool2);
 	}
 
@@ -54,7 +54,8 @@ public class ReusablePoolTest {
 	}
 
 	/**
-	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}.
+	 * Test method for
+	 * {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}.
 	 */
 	@Test
 	public void testReleaseReusable() {
