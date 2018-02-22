@@ -9,11 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-<<<<<<< HEAD
 import ubu.gii.dass.c01.NotFreeInstanceException;
 import ubu.gii.dass.c01.Reusable;
-=======
->>>>>>> branch 'master' of https://github.com/rnc0011/poolobject.git
 import ubu.gii.dass.c01.ReusablePool;
 
 /**
@@ -80,7 +77,6 @@ public class ReusablePoolTest {
 			
 		}catch (NotFreeInstanceException e2){
 			
-			System.out.println("testAcquireReusable -> Ok");
 		}
 
 		
