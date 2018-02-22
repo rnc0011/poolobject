@@ -73,6 +73,7 @@ public class ReusablePoolTest {
 		try {
 
 			miPool.acquireReusable();
+			miPool.acquireReusable();
 			fail("NotFreeInstanceException was expected");
 
 		} catch (NotFreeInstanceException e2) {}
@@ -107,7 +108,8 @@ public class ReusablePoolTest {
 		try {
 			pool.releaseReusable(reusable2);
 			pool.releaseReusable(reusable2);
-		}catch (DuplicatedInstanceException e) {}
+			fail("DuplicatedInstanceException was expected");
+		}catch (DuplicatedInstanceException e2) {}
 	
 	}
 
