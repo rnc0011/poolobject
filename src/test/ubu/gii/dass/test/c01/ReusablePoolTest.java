@@ -9,8 +9,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+<<<<<<< HEAD
 import ubu.gii.dass.c01.NotFreeInstanceException;
 import ubu.gii.dass.c01.Reusable;
+=======
+>>>>>>> branch 'master' of https://github.com/rnc0011/poolobject.git
 import ubu.gii.dass.c01.ReusablePool;
 
 /**
@@ -38,7 +41,13 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testGetInstance() {
-		fail("Not yet implemented");
+		ReusablePool pool = ReusablePool.getInstance();
+		assertTrue(pool instanceof ReusablePool);
+
+		ReusablePool pool2 = ReusablePool.getInstance();
+		assertTrue(pool2 instanceof ReusablePool);
+
+		assertTrue(pool == pool2);
 	}
 
 	/**
@@ -78,7 +87,8 @@ public class ReusablePoolTest {
 	}
 
 	/**
-	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}.
+	 * Test method for
+	 * {@link ubu.gii.dass.c01.ReusablePool#releaseReusable(ubu.gii.dass.c01.Reusable)}.
 	 */
 	@Test
 	public void testReleaseReusable() {
