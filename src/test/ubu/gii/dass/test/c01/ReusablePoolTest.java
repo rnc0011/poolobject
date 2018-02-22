@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ubu.gii.dass.c01.DuplicatedInstanceException;
 import ubu.gii.dass.c01.NotFreeInstanceException;
 import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
@@ -52,34 +53,32 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testAcquireReusable() {
-		
+
 		ReusablePool miPool = ReusablePool.getInstance();
-		
+
 		try {
-			
+
 			Reusable miReusable1 = miPool.acquireReusable();
 			assertTrue(miReusable1 instanceof Reusable);
 			Reusable miReusable2 = miPool.acquireReusable();
 			assertTrue(miReusable2 instanceof Reusable);
 			assertFalse(miReusable1.equals(miReusable2));
-			
-			
-		} catch (NotFreeInstanceException e){
-			
+
+		} catch (NotFreeInstanceException e) {
+
 			fail("Unexpected NotFreeInstanceException");
-			
-		}
-		
-		try {
-			
-			miPool.acquireReusable();
-			fail("NotFreeInstanceException was expected");
-			
-		}catch (NotFreeInstanceException e2){
-			
+
 		}
 
-		
+		try {
+
+			miPool.acquireReusable();
+			fail("NotFreeInstanceException was expected");
+
+		} catch (NotFreeInstanceException e2) {
+
+		}
+
 	}
 
 	/**
@@ -88,7 +87,22 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testReleaseReusable() {
-		fail("Not yet implemented");
+		Reusable reusable = new Reusable();
+		ReusablePool pool = ReusablePool.getInstance();
+		try {
+			pool.releaseReusable(reusable);
+			Reusable aux;
+
+			try {
+				aux = pool.acquireReusable();
+				assertTrue(reusable == aux);
+			} catch (NotFreeInstanceException e) {
+				fail("Unexpected NotFreeInstanceException");
+			}
+
+		} catch (DuplicatedInstanceException e) {
+			fail("Unexpected DuplicatedInstanceException");
+		}
 	}
 
 }
