@@ -45,7 +45,7 @@ public class ReusablePoolTest {
 		ReusablePool pool2 = ReusablePool.getInstance();
 		assertTrue(pool2 instanceof ReusablePool);
 
-		assertTrue(pool == pool2);
+		assertEquals(pool, pool2);
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class ReusablePoolTest {
 
 			try {
 				aux = pool.acquireReusable();
-				assertTrue(reusable == aux);
+				assertEquals(reusable, aux);
 			} catch (NotFreeInstanceException e) {
 				fail("Unexpected NotFreeInstanceException");
 			}
