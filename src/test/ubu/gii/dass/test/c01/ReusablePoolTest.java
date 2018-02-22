@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ubu.gii.dass.c01.ReusablePool;
+
 /**
  * @author alumno
  *
@@ -34,7 +36,13 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testGetInstance() {
-		fail("Not yet implemented");
+		ReusablePool pool = ReusablePool.getInstance();
+		assertEquals(true, pool instanceof ReusablePool);
+		
+		ReusablePool pool2 = ReusablePool.getInstance();
+		assertEquals(true, pool2 instanceof ReusablePool);
+		
+		assertTrue(pool == pool2);
 	}
 
 	/**
